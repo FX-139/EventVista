@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cool Location-based AR.js demo</title>
+
+    <!-- A-Frame itself -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+    <!-- AR.js A-Frame components -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden">
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false"
+    >
+      <!-- Enable the GPS camera with gpsEnabled -->
+      <a-camera gps-camera="gpsEnabled: true" rotation-reader></a-camera>
+
+      <!-- AR Objects -->
+
+      <a-cone
+        radius-bottom="0.18"
+        radius-top="0"
+        height="0.35"
+        color="blue"
+        transparent="true"
+        position="1 1 -2"
+        rotation="13 180 90"
+      ></a-cone>
+
+      <!-- The reference point -->
+      <a-entity id="center" position="0 0 0"></a-entity>
+
+      <a-text
+        value="Who lives in a pineapple under the sea?"
+        look-at="#center"
+        scale="2 2 2"
+        position="4 3 3"
+        rotation="0 0 0"
+      ></a-text>
+
+      <!-- Jellyfish -->
+      <a-entity
+        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Jelly.glb?v=1698440222118"
+        look-at="#center"
+        scale="0.009 0.009 0.009"
+        position="-3.5 4 -8"
+        rotation="0 0 0"
+      ></a-entity>
+
+      <!-- Jellyfish 02 -->
+      <a-entity
+        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Jelly.glb?v=1698440222118"
+        look-at="#center"
+        scale="0.006 0.006 0.006"
+        position="-6.5 2 8"
+        rotation="0 0 0"
+      ></a-entity>
+
+      <!-- Gary -->
+      <a-entity
+        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Gary.glb?v=1698444536388"
+        scale="0.006 0.006 0.006"
+        position="-9 -3 2"
+        rotation="0 45 0"
+      ></a-entity>
+
+      <!-- Squidward -->
+      <a-entity
+        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Squidward.glb?v=1698444525498"
+        look-at="#center"
+        scale="0.007 0.007 0.007"
+        position="-7 0 -6.5"
+        rotation="0 0 0"
+      ></a-entity>
+
+      <!-- Patrick -->
+      <a-entity
+        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/patrick_star_spongebob.glb?v=1698445907318"
+        look-at="#center"
+        scale="0.009 0.009 0.009"
+        position="6 0 -3"
+        rotation="0 0 0"
+      ></a-entity>
+
+      <!-- Spongebob -->
+      <a-entity
+        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Spongebob.glb?v=1698440234716"
+        look-at="#center"
+        scale="0.01 0.01 0.01"
+        position="4 -2 7"
+        rotation="0 0 0"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
+
+// q: how to setup a live preview of this app?
+// a: https://glitch.com/edit/#!/arjs-playground?path=index.html%3A1%3A0
+
+// q: is this code usable without glitch?
+// a: yes, just copy the code and paste it into a new file called index.html
+
+// q: what components am I missing in VS Code for this to run?
+// a: you need to install the Live Server extension
