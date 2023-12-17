@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Cool Location-based AR.js demo</title>
-
+    <title>EventVista</title>
+    <script src="script.js"></script>
     <!-- A-Frame itself -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 
@@ -15,92 +15,40 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   </head>
 
-  <body style="margin: 0; overflow: hidden">
-    <a-scene
-      vr-mode-ui="enabled: false"
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false"
-    >
-      <!-- Enable the GPS camera with gpsEnabled -->
-      <a-camera gps-camera="gpsEnabled: true" rotation-reader></a-camera>
+  <body>
+    <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false" renderer="antialias: true; alpha: true">
+       <!--        <a-camera gps-camera="simulateLatitude: 48.1302375; simulateLongitude: 11.6383594" rotation-reader> -->
+    
 
-      <!-- AR Objects -->
 
-      <a-cone
-        radius-bottom="0.18"
-        radius-top="0"
-        height="0.35"
-        color="blue"
-        transparent="true"
-        position="1 1 -2"
-        rotation="13 180 90"
-      ></a-cone>
-
-      <!-- The reference point -->
-      <a-entity id="center" position="0 0 0"></a-entity>
-
-      <a-text
-        value="Who lives in a pineapple under the sea?"
-        look-at="#center"
-        scale="2 2 2"
-        position="4 3 3"
-        rotation="0 0 0"
-      ></a-text>
-
-      <!-- Jellyfish -->
-      <a-entity
-        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Jelly.glb?v=1698440222118"
-        look-at="#center"
-        scale="0.009 0.009 0.009"
-        position="-3.5 4 -8"
-        rotation="0 0 0"
-      ></a-entity>
-
-      <!-- Jellyfish 02 -->
-      <a-entity
-        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Jelly.glb?v=1698440222118"
-        look-at="#center"
-        scale="0.006 0.006 0.006"
-        position="-6.5 2 8"
-        rotation="0 0 0"
-      ></a-entity>
-
-      <!-- Gary -->
-      <a-entity
-        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Gary.glb?v=1698444536388"
-        scale="0.006 0.006 0.006"
-        position="-9 -3 2"
-        rotation="0 45 0"
-      ></a-entity>
-
-      <!-- Squidward -->
-      <a-entity
-        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Squidward.glb?v=1698444525498"
-        look-at="#center"
-        scale="0.007 0.007 0.007"
-        position="-7 0 -6.5"
-        rotation="0 0 0"
-      ></a-entity>
-
-      <!-- Patrick -->
-      <a-entity
-        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/patrick_star_spongebob.glb?v=1698445907318"
-        look-at="#center"
-        scale="0.009 0.009 0.009"
-        position="6 0 -3"
-        rotation="0 0 0"
-      ></a-entity>
-
-      <!-- Spongebob -->
-      <a-entity
-        gltf-model="https://cdn.glitch.global/bd29ccb9-2f5a-4239-a30d-612f153537dc/Spongebob.glb?v=1698440234716"
-        look-at="#center"
-        scale="0.01 0.01 0.01"
-        position="4 -2 7"
-        rotation="0 0 0"
-      ></a-entity>
+        <a-camera gps-new-camera=" gpsMinDistance:1, positionMinAccuracy: 5, alert:true" arjs-device-orientation-controls="smoothingFactor: 0.1" >
+            
+            <!-- Pfeilspitze, die auf den gelben Würfel zeigt -->
+            <a-cone 
+                position="0 -2 -4" 
+                radius-bottom="0.1" 
+                height="0.5" 
+                color="red"
+                look-at="#yellow-cylinder"
+                rotation="45 0 0"
+            ></a-cone>
+        </a-camera>
+    <!-- Coordinates: Antons backyard -->
+        <a-cylinder
+            id="yellow-cylinder"
+            material="color: yellow"
+            gps-new-entity-place="latitude: 48.13057728004982; longitude: 11.638480487915052"
+            scale="1 1000 1"
+        ></a-cylinder>
+    
+        <a-text
+            value="Flunky ball by Paul"
+            look-at="[gps-camera]"
+            scale="30 30 30"
+            gps-new-entity-place="latitude: 48.130507; longitude:  11.63841"
+        ></a-text>
     </a-scene>
-  </body>
+    </body>
 </html>
 
 // q: how to setup a live preview of this app?
